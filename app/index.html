@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular</title>
+</head>
+<body ng-app="notesApp">
+	<div ng-controller="mainCtrl as c"><button ng-click="c.myEvent()">点击</button>
+		<h1>hello word</h1>
+		<div ng-repeat="p in c.person">
+			<h2 ng-class="c.getClassName(p.status)" ng-bind="p.name"></h2><button ng-click="c.myEvent()">点击</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
