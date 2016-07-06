@@ -4,16 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>angular</title>
+    <style type="text/css">
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+    </style>
 </head>
 
 <body ng-app="notesApp">
-    <div ng-controller="mainCtrl as ctrl">
-        <form ng-submit="ctrl.submit()" name="myForm">
-            <input type="text" name="username" ng-model="ctrl.user.username" ng-pattern='/^\d+$/' required/><span ng-show="myForm.username.$error.required">not null</span>
-            <input type="password" ng-model="ctrl.user.password" required/>
-            <input type="reset" value="reset" ng-disabled="myForm.$pristine"/>
-            <input type="submit" value="Submit" ng-disabled="myForm.$invalid" />
-        </form>
+    <div ng-controller="MainCtrl as ctrl">
+        <button ng-click='ctrl.printLog()'>打印日志</button>
+       <!--  <form ng-submit="ctrl.submit()" name="myForm">
+           <select name="mySelect" ng-model="ctrl.mySelected" ng-options="o.value as o.key group by o.type for o in ctrl.selectList">
+           </select><span ng-cloak>{{ctrl.mySelected.key}}</span>
+           <input type="text" name="username" ng-bind="ctrl.user.username" ng-pattern='/^\d+$/' required/>
+           <div ng-switch on="ctrl.mySwitch" class="ng-clock">
+               <h1 ng-switch-when='Tom'>Tom</h1>
+               <h1 ng-switch-when='Kitty'>Kitty</h1>
+           </div>
+           <input type="password" ng-model="ctrl.user.password" required/>
+           <input type="reset" value="reset" ng-disabled="myForm.$pristine" />
+           <input type="submit" value="Submit" ng-disabled="myForm.$invalid" />
+       </form> -->
     </div>
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
