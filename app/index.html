@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="notesApp">
 
 <head>
     <meta charset="UTF-8">
@@ -16,21 +16,33 @@
     </style>
 </head>
 
-<body ng-app="notesApp">
-    <div ng-controller="MainCtrl as ctrl">
-        <button ng-click='ctrl.printLog()'>打印日志</button>
-       <!--  <form ng-submit="ctrl.submit()" name="myForm">
-           <select name="mySelect" ng-model="ctrl.mySelected" ng-options="o.value as o.key group by o.type for o in ctrl.selectList">
-           </select><span ng-cloak>{{ctrl.mySelected.key}}</span>
-           <input type="text" name="username" ng-bind="ctrl.user.username" ng-pattern='/^\d+$/' required/>
-           <div ng-switch on="ctrl.mySwitch" class="ng-clock">
-               <h1 ng-switch-when='Tom'>Tom</h1>
-               <h1 ng-switch-when='Kitty'>Kitty</h1>
-           </div>
-           <input type="password" ng-model="ctrl.user.password" required/>
-           <input type="reset" value="reset" ng-disabled="myForm.$pristine" />
-           <input type="submit" value="Submit" ng-disabled="myForm.$invalid" />
-       </form> -->
+<body ng-controller="MainCtrl as mainCtrl">
+    <h1>hello controllers!</h1>
+    <button ng-click="mainCtrl.open('first')">open first</button>
+    <button ng-click="mainCtrl.open('second')">open second</button>
+    <div ng-switch on="mainCtrl.tab">
+      <div ng-switch-when='first'>
+        <div ng-controller="SubCtrl as ctrl">
+          <h3>first tab</h3>
+          <ul>
+            <li ng-repeat='item in ctrl.list()'>
+              <span ng-bind="item.label"></span>
+            </li>
+          </ul>
+          <button ng-click="ctrl.add()">add more items</button>
+        </div>
+      </div>
+      <div ng-switch-when='second'>
+        <div ng-controller="SubCtrl as ctrl">
+          <h3>second tab</h3>
+          <ul>
+            <li ng-repeat='item in ctrl.list()'>
+              <span ng-bind="item.label"></span>
+            </li>
+          </ul>
+          <button ng-click="ctrl.add()">add more items</button>
+        </div>
+      </div>
     </div>
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
